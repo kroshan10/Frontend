@@ -4,7 +4,7 @@ import config from './Chatbot/config';
 import ActionProvider from './Chatbot/ActionProvider';
 import MessageParser from './Chatbot/MessageParser';
 import "./App.css";
-
+import Header from './Chatbot/Component/Header';
 function App() {
 
   return (
@@ -13,6 +13,8 @@ function App() {
         config={config}
         messageParser={MessageParser}
         actionProvider={ActionProvider}
+        headerText=<Header/>
+        
       />
     </div>
   )

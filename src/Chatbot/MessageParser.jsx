@@ -2,11 +2,13 @@ import React from 'react';
 
 const MessageParser = ({ children, actions }) => {
   const { checker } = children.props.state;
+  let name;
   const parse = (message) => {
 
 
     if(checker === "name") {
-      actions.afterNameMessage();
+      name=message;
+      actions.afterNameMessage(name);
     }
 
   }

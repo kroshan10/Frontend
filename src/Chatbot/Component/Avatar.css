@@ -1,0 +1,14 @@
+.CARE{
+    background-color: #cdc7bb;
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    color: white;
+    border-radius: 10%;
+}
+
+.bot{
+    width: 40px;
+    height: 40px;
+}

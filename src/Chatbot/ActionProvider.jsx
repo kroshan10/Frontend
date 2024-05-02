@@ -2,8 +2,12 @@ import React from 'react';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
-  const afterNameMessage = () => {
-    const message = createChatBotMessage('Hello! How can I assist you today? Are you experiencing any symptoms? Please describe them to me.', {
+  const custommsg = (msg) => {
+    const message = createChatBotMessage(msg);
+    updateState(message);
+  }
+  const afterNameMessage = (name) => {
+    const message = createChatBotMessage(`Hello ${name}! How can I assist you today? Are you experiencing any symptoms? Please describe them to me.`, {
       widget: "disease"
     });
     updateState(message);
@@ -58,6 +62,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         return React.cloneElement(child, {
           actions: {
             initialAction,
+            custommsg,
             afterNameMessage,
             heartDisease,
             fever,

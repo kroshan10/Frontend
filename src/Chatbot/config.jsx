@@ -1,7 +1,7 @@
 import { createChatBotMessage } from 'react-chatbot-kit';
-import Avatar from './Avatar';
+import Avatar from './Component/Avatar';
 
-import Option from './Option'
+import Option from './widget/Option'
 
 const config = {
   botName: "Healt Chatbot Assistant",
@@ -10,7 +10,6 @@ const config = {
   })],
   customComponents: {
     botAvatar : (props) => <Avatar { ... props} />,
-    // userAvatar : (props) => <Avatar { ...props} />
   },
   widgets: [
     {
@@ -19,6 +18,7 @@ const config = {
       values={[
         {text:"Let's Get Started", action:props.actions.initialAction},
       ]}/>,
+      
     },
   
     {
