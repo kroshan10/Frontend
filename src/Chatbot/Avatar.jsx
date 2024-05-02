@@ -4,6 +4,8 @@ import "./Avatar.css";
 
 export default function Avatar() {
     return (
-        <div className="CARE">Care</div>
+        <div className="CARE">
+            <img className="bot" src="/bot.png" alt="" />
+        </div>
     )
 }

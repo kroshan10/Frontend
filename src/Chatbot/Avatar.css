@@ -1,9 +1,14 @@
 .CARE{
-    background-color: #cbad6d;
+    background-color: #cdc7bb;
     width: 60px;
     height: 60px;
     display: grid;
     place-items: center;
     color: white;
     border-radius: 100%;
+}
+
+.bot{
+    width: 40px;
+    height: 40px;
 }
