@@ -5,7 +5,7 @@ const MessageParser = ({ children, actions }) => {
   const parse = (message) => {
 
 
-    if(checker === "age") {
+    if(checker === "name") {
       actions.afterNameMessage();
     }
 

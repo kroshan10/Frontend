@@ -87,14 +87,26 @@ background: linear-gradient(to right, #d53369, #cbad6d); /* W3C, IE 10+/ Edge, F
 }
 
 .start-btn{
-  background-color: #d53369;
+  background-color: #6633d5;
   color: white;
   padding: .5rem 1rem;
-  border-radius: 999px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   margin-left: 4.5rem;
   margin-bottom: 10px;
+}
+.menu{
+  
+    background-color: #6633d5;
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-left: .5rem;
+    margin-bottom: 10px;
+  
 }
 
 .slow-btn{

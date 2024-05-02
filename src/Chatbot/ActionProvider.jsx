@@ -3,22 +3,51 @@ import React from 'react';
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
   const afterNameMessage = () => {
-    // const message = createChatBotMessage('Let me know your age so I can provide the best support');
-    const message = createChatBotMessage('Hello! How can I assist you today? Are you experiencing any symptoms? Please describe them to me.',{
+    const message = createChatBotMessage('Hello! How can I assist you today? Are you experiencing any symptoms? Please describe them to me.', {
       widget: "disease"
     });
     updateState(message);
   }
-   const initialAction = () => {
+
+  const initialAction = () => {
     const message = createChatBotMessage('Just type in your name to begin.');
-    updateState(message, "age");
+    updateState(message, "name");
   }
 
+  const heartDisease = () => {
+    const message = createChatBotMessage('Are you experiencing any chest pain?');
+    updateState(message, "heartDisease");
+  }
+
+  const fever = () => {
+    const message = createChatBotMessage('Do you have a fever?');
+    updateState(message, "fever");
+  }
+
+  const cough = () => {
+    const message = createChatBotMessage('Are you experiencing coughing?');
+    updateState(message, "cough");
+  }
+
+  const headache = () => {
+    const message = createChatBotMessage('Are you experiencing headaches?');
+    updateState(message, "headache");
+  }
+
+  const pain = () => {
+    const message = createChatBotMessage('Are you experiencing any pain?');
+    updateState(message, "pain");
+  }
+
+  const other = () => {
+    const message = createChatBotMessage('Please describe your symptoms in detail. I can help you with that.');
+    updateState(message, "other");
+  }
 
   const updateState = (message, checker = "") => {
     setState((prev) => ({
-      ... prev,
-      messages: [ ... prev.messages, message],
+      ...prev,
+      messages: [...prev.messages, message],
       checker
     }))
   }
@@ -29,7 +58,13 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         return React.cloneElement(child, {
           actions: {
             initialAction,
-            afterNameMessage
+            afterNameMessage,
+            heartDisease,
+            fever,
+            cough,
+            headache,
+            pain,
+            other,
           },
         });
       })}
