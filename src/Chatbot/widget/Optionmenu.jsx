@@ -1,9 +1,8 @@
 import React from "react";
 
 const Option = (props) => {
-    const { values } = props; // Destructure the values prop
+    const { payload } = props; // Destructure the values prop
 
-    
     const handleOptionClick = (action,text) => {
         // Call the action passed as a prop
         if (action) {
@@ -13,7 +12,7 @@ const Option = (props) => {
 
     return (
         <div>
-            {values.map((item, index) => (
+            {payload.map((item, index) => (
                 <button key={index} className="menu" onClick={() => handleOptionClick(item.action,item.text)}>
                     {item.text}
                 </button>
