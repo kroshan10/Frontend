@@ -19,7 +19,10 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   }
 
   const heartDisease = () => {
-    const message = createChatBotMessage('Are you experiencing any chest pain?');
+    const message = createChatBotMessage('Are you experiencing any chest pain?',{
+      payload:{name: "heartDisease"}
+    }
+  );
     updateState(message, "heartDisease");
   }
 
@@ -47,6 +50,8 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     const message = createChatBotMessage('Please describe your symptoms in detail. I can help you with that.');
     updateState(message, "other");
   }
+
+  
 
   const updateState = (message, checker = "") => {
     setState((prev) => ({
