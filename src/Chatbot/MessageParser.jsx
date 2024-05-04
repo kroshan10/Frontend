@@ -13,19 +13,7 @@ const MessageParser = ({ children, actions, }) => {
       updateState(msg,'name',message)
       actions.afterNameMessage(message);
     }
-    else if(checker === "heartDisease") {
-      children.props.state.age = message;
-      const msg=actions.createChatBotMessage("What is your sex", {
-        withAvatar: true,
-        payload: [
-          {text:'Male',action:actions.handleSex},
-          {text:'Female',action:actions.handleSex},
-        ],
-        widget:'optionmenu'
-      });
-
-      updateState(msg);
-    } 
+    
     
     
   }

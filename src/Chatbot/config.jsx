@@ -3,6 +3,7 @@ import Avatar from './Component/Avatar';
 
 import Option from './widget/Option'
 import Optionmenu from './widget/Optionmenu'
+import HeartForm from "./widget/Form/HeartDisease"
 
 const config = {
 
@@ -50,6 +51,10 @@ const config = {
     {
       widgetName: "optionmenu",
       widgetFunc: (props) => <Optionmenu {...props} />
+    },
+    {
+      widgetName: "heartForm",
+      widgetFunc: (props) => <HeartForm {...props} />
     },
 
   ]

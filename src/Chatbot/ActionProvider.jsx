@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   
@@ -25,9 +25,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
 
   const DiseaseMenu = {
     heartDisease: function () {
-      const message = createChatBotMessage("What is your age?", {
+      const message = createChatBotMessage("Please ansewer the following questions to assess your risk of heart disease:", {
         withAvatar: true,
-       
+        widget: "heartForm"
       });
       updateState(message, "heartDisease");
     },
@@ -64,33 +64,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     },
   };
 
-  const handleSex = (sex) => {
-    const message = createChatBotMessage(`You selected ${sex}`);
-    let val;
-    if (sex === "Male") {
-      val = 1;
-    } else {
-      val = 0;
-    }
-    // children.props.children.props.state.sex = sex;
-    children.props.children.props.state.sex = val;
-    
-    // custommsg("What type of chest pain are you experiencing?", "cp");
-    const msg= createChatBotMessage('What type of chest pain are you experiencing?' ,{
-      withAvatar: true,
-      payload: [
-        {text:'Typical Angina',action:''},
-        {text:'Atypical Angina',action:''}, 
-        {text:'Non-anginal Pain',action:''},
-        {text:'Asymptomatic',action:''},
-      ],
-      widget:'optionmenu'
-    })
-    children.props.children.props.state.checker = 'cp';
-    updateState(msg,"cp")
 
-    console.log(children.props.children.props.state,val);
-  };
 
   const updateState = (message, checker = "") => {
     setState((prev) => ({
@@ -116,7 +90,6 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
             setState,
             afterNameMessage,
             DiseaseMenu,
-            handleSex,
             createChatBotMessage,
             updateState
           },
