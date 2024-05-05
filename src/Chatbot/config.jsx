@@ -16,7 +16,7 @@ const config = {
     botAvatar : (props) => <Avatar { ... props} />,
   },
   state:{
-    name:'',age:'',sex:'',cp:'',trestbps:'',chol:'',fbs:"",restecg:'',thalach:"",exang:'',oldpeak:'',slope:'',ca:'',thal:'',
+    name:'',
 
   },
 

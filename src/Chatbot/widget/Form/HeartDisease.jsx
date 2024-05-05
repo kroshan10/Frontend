@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './Form.css'; // Import CSS file
+import './Form.css'; 
+import axios from 'axios';
 
 function HeartDisease() {
   const [questions, setQuestions] = useState([
@@ -115,9 +116,9 @@ function HeartDisease() {
       answer: '',
       type: 'select',
       options: [
-        { key: 'Normal', value: 0 }, 
-        { key: 'Fixed defect', value: 1 },
-        { key: 'Reversable defect', value: 2 }
+        { key: 'Normal', value: 1}, 
+        { key: 'Fixed defect', value: 2 },
+        { key: 'Reversable defect', value: 3 }
       ]
     }
   ]);
@@ -144,7 +145,13 @@ function HeartDisease() {
 
   const handleSubmit = () => {
     const formData = questions.map(question => question.answer);
-    console.log([formData]); // Output the formatted data
+    axios.post('http://127.0.0.1:8000/predict', formData)
+    .then(response => {
+      console.log('Success:', response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   };
 
   const renderInputField = () => {

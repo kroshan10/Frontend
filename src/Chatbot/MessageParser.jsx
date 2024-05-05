@@ -7,7 +7,7 @@ const MessageParser = ({ children, actions, }) => {
   
   const parse = (message) => {
 
-    
+    if (message.include())
     if(checker === "name") {
       let msg='';
       updateState(msg,'name',message)
