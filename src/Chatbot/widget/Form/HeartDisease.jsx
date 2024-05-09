@@ -163,6 +163,7 @@ function HeartDisease() {
           className="input-field"
           value={currentQuestion.answer}
           onChange={handleInputChange}
+          required
         />
       );
     } else if (currentQuestion.type === 'select') {
@@ -171,6 +172,7 @@ function HeartDisease() {
           className="input-field"
           value={currentQuestion.answer}
           onChange={handleInputChange}
+          required
         >
           <option value="">Select</option>
           {currentQuestion.options.map((option, index) => (
@@ -193,7 +195,7 @@ function HeartDisease() {
 
   return (
     <div className="container" onKeyDown={handleKeyDown}>
-      <p className="question-text">{currentQuestionIndex+1}.{questions[currentQuestionIndex].text}</p>
+      <p className="question-text">{currentQuestionIndex+1}.{questions[currentQuestionIndex].text}<span style={{color:'red'}}>*</span></p>
       {renderInputField()}
       <br />
       {currentQuestionIndex > 0 && (

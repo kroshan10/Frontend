@@ -9,17 +9,17 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   };
   const afterNameMessage = (name) => {
     const message = createChatBotMessage(
-      `Hello ${name}! How can I assist you today? Are you experiencing any symptoms? Please describe them to me.`,
+      `Hey ${name}! How can I assist you today? Please Select any option for futher process. `,
       {
         widget: "disease",
+        withAvatar:true
       }
     );
-
     updateState(message);
   };
 
   const initialAction = () => {
-    const message = createChatBotMessage("Just type in your name to begin.");
+    const message = createChatBotMessage("Hello! Please type in your name to begin.");
     updateState(message, "name");
   };
 
@@ -64,6 +64,13 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     },
   };
 
+  const handleErr=()=>{
+    const message = createChatBotMessage("Sorry, I don't Understand .Please Start Again from Beginning.", {
+      withAvatar: true
+    });
+    updateState(message);
+    afterNameMessage()
+  }
 
 
   const updateState = (message, checker = "") => {
@@ -73,6 +80,12 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       checker,
     }));
   };
+  const updateVal = (key ,val) => {
+    setState((prev) => ({
+      ...prev,
+      [key]: val
+    }));
+  }
 
   ActionProvider.propTypes = {
     createChatBotMessage: PropTypes.func.isRequired,
@@ -91,7 +104,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
             afterNameMessage,
             DiseaseMenu,
             createChatBotMessage,
-            updateState
+            updateState,
+            updateVal,
+            handleErr,
           },
         });
       })}

@@ -1,24 +1,31 @@
-import { createChatBotMessage } from 'react-chatbot-kit';
+import { createChatBotMessage, createClientMessage, createCustomMessage } from 'react-chatbot-kit';
 import Avatar from './Component/Avatar';
 
 import Option from './widget/Option'
 import Optionmenu from './widget/Optionmenu'
 import HeartForm from "./widget/Form/HeartDisease"
+import CustomMsg from './Component/CustomMsg';
+
 
 const config = {
 
   botName: "Healt Chatbot Assistant",
   initialMessages: [createChatBotMessage(`Welcome to HealthCare Assistance!`, {
     widget: "startBtn"
-  })
+  }),
+  createCustomMessage('Test','custom',{withAvatar:true,widget:'custom'})
+
 ],
   customComponents: {
     botAvatar : (props) => <Avatar { ... props} />,
   },
   state:{
-    name:'',
+    name:'',checker:''
 
   },
+  // customMessages: {
+  //   custom: (props) => <CustomMsg {...props} />,
+  // },
 
   widgets: [
     {

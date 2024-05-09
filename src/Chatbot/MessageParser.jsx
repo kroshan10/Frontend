@@ -4,26 +4,23 @@ import PropTypes from 'prop-types';
 
 const MessageParser = ({ children, actions, }) => {
   const { checker } = children.props.state;
-  
-  const parse = (message) => {
+  const parse = (message) => 
+  {
 
-    if (message.include())
-    if(checker === "name") {
-      let msg='';
-      updateState(msg,'name',message)
-      actions.afterNameMessage(message);
+    if (checker===""){
+     console.log(children.props.state);
+     if (children.props.state.name){
+      actions.handleErr()
+     }
+     else{
+      actions.initialAction()
+     }
     }
-    
-    
-    
-  }
-
-  const updateState=(msg,key='',value='')=>{
-    actions.setState((prev)=>({
-      ...prev,
-      [key]:value,
-      messages:[...prev.messages,msg]
-    }))
+    if(checker === "name") {
+      actions.updateVal("name", message);
+      actions.afterNameMessage(message);
+      
+    }
   }
 
   return (
