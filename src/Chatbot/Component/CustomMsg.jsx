@@ -5,9 +5,10 @@ import { useState } from "react";
 export default function CustomMsg(props) {
     const [prompt, setPrompt] = useState("");
     const [Data, setData] = useState("");
+    const googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
     const genAI = new GoogleGenerativeAI(
-        "AIzaSyBV_VqzgAKqOgXhXt4VTsDnRM4tyf8YUCo"
+        googleApiKey
       );
     const fetchData = async () => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
