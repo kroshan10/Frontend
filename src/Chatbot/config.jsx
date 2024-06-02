@@ -4,7 +4,7 @@ import Avatar from './Component/Avatar';
 import Option from './widget/Option'
 import Optionmenu from './widget/Optionmenu'
 import HeartForm from "./widget/Form/HeartDisease"
-import CustomMsg from './Component/CustomMsg';
+import Other from './Component/Other';
 
 
 const config = {
@@ -13,7 +13,8 @@ const config = {
   initialMessages: [createChatBotMessage(`Welcome to HealthCare Assistance!`, {
     widget: "startBtn"
   }),
-  createCustomMessage('Test','custom',{withAvatar:true,widget:'custom'})
+  
+
 
 ],
   customComponents: {
@@ -23,9 +24,9 @@ const config = {
     name:'',checker:''
 
   },
-  // customMessages: {
-  //   custom: (props) => <CustomMsg {...props} />,
-  // },
+  customMessages: {
+    custom: (props) => <Other {...props} />,
+  },
 
   widgets: [
     {

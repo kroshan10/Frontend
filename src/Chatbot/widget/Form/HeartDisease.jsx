@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Form.css'; 
 import axios from 'axios';
 
-function HeartDisease() {
+function HeartDisease(props) {
   const [questions, setQuestions] = useState([
     { 
       id: 1, 
@@ -123,7 +123,10 @@ function HeartDisease() {
     }
   ]);
   
+  const [result, setResult] = useState('');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [showResult, setShowResult] = useState(true);
+  
 
   const handleInputChange = (e) => {
     const updatedQuestions = [...questions];
@@ -145,9 +148,14 @@ function HeartDisease() {
 
   const handleSubmit = () => {
     const formData = questions.map(question => question.answer);
+    // const formData = [63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1];
     axios.post('http://127.0.0.1:8000/predict', formData)
     .then(response => {
-      console.log('Success:', response.data);
+      console.log('Success:', response.data,formData);
+      setResult(response.data.prediction);
+      setShowResult(false);
+      console.log(props)
+      props.actions.custommsg(`your prediction is: ${response.data.prediction}`);
     })
     .catch(error => {
       console.error('Error:', error);
@@ -194,20 +202,25 @@ function HeartDisease() {
   };
 
   return (
-    <div className="container" onKeyDown={handleKeyDown}>
-      <p className="question-text">{currentQuestionIndex+1}.{questions[currentQuestionIndex].text}<span style={{color:'red'}}>*</span></p>
-      {renderInputField()}
-      <br />
-      {currentQuestionIndex > 0 && (
-        <button className="previous-button button" onClick={handlePreviousQuestion}>Previous</button>
+    <>
+      {showResult && (
+        <div className="container" onKeyDown={handleKeyDown}>
+          <p className="question-text">{currentQuestionIndex + 1}.{questions[currentQuestionIndex].text}<span style={{ color: 'red' }}>*</span></p>
+          {renderInputField()}
+          <br />
+          {currentQuestionIndex > 0 && (
+            <button className="previous-button button" onClick={handlePreviousQuestion}>Previous</button>
+          )}
+          {currentQuestionIndex < questions.length - 1 ? (
+            <button className="next-button button" onClick={handleNextQuestion}>Next</button>
+          ) : (
+            <button className="submit-button button" onClick={handleSubmit}>Submit</button>
+          )}
+        </div>
       )}
-      {currentQuestionIndex < questions.length - 1 ? (
-        <button className="next-button button" onClick={handleNextQuestion}>Next</button>
-      ) : (
-        <button className="submit-button button" onClick={handleSubmit}>Submit</button>
-      )}
-    </div>
+    </>
   );
+  
 };
 
 export default HeartDisease;
