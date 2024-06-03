@@ -2,9 +2,9 @@ import { createChatBotMessage, createClientMessage, createCustomMessage } from '
 import Avatar from './Component/Avatar';
 
 import Option from './widget/Option'
-import Optionmenu from './widget/Optionmenu'
 import HeartForm from "./widget/Form/HeartDisease"
 import Other from './Component/Other';
+import Suggestion from './Component/Suggestion';
 
 
 const config = {
@@ -25,7 +25,8 @@ const config = {
 
   },
   customMessages: {
-    custom: (props) => <Other {...props} />,
+    other: (props) => <Other {...props} />,
+    suggest:(props)=> <Suggestion {...props} />,
   },
 
   widgets: [
@@ -56,14 +57,15 @@ const config = {
         {text:"Female", action: props.actions.handleSex}
         ]}/>
     },
-    {
-      widgetName: "optionmenu",
-      widgetFunc: (props) => <Optionmenu {...props} />
-    },
+    
     {
       widgetName: "heartForm",
       widgetFunc: (props) => <HeartForm {...props} />
     },
+    {
+      widgetName: "Other",
+      widgetFunc: (props) => <Other {...props} />
+    }
 
   ]
 }

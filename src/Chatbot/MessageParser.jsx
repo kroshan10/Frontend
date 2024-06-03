@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 
 const MessageParser = ({ children, actions, }) => {
   const { checker } = children.props.state;
+  let err=1
   const parse = (message) => 
   {
-
-    if (checker===""){
+    message = message.toLowerCase();
+    if (message.includes("retrain")) {
+      actions.handleRetrain();
+      err=0
+    }
+    if (checker==="" && err===1){
      console.log(children.props.state);
      if (children.props.state.name){
       actions.handleErr()
@@ -16,11 +21,17 @@ const MessageParser = ({ children, actions, }) => {
       actions.initialAction()
      }
     }
-    if(checker === "name") {
+    if(checker === "name" && err==1) {
       actions.updateVal("name", message);
+      
       actions.afterNameMessage(message);
       
     }
+    if (checker==='other' && err==1) {
+      actions.handleotherform(message);
+    }
+    
+
   }
 
   return (
